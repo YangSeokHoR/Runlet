@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct ManagerWindowView: View {
-    static let windowID = "manager"
-
     @EnvironmentObject private var store: CommandStore
     @State private var selection: RunCommand.ID?
 
