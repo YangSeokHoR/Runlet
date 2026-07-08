@@ -10,9 +10,10 @@ import SwiftUI
 import AppKit
 
 struct MenuBarListView: View {
+    let onOpenManager: () -> Void
+
     @EnvironmentObject private var store: CommandStore
     @EnvironmentObject private var loginItem: LoginItemManager
-    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         if store.commands.isEmpty {
@@ -29,8 +30,7 @@ struct MenuBarListView: View {
         Divider()
 
         Button("명령어 관리…") {
-            openWindow(id: ManagerWindowView.windowID)
-            NSApp.activate(ignoringOtherApps: true)
+            onOpenManager()
         }
 
         Toggle("로그인 시 자동 실행", isOn: Binding(
